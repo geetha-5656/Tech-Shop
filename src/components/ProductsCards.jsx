@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import productsData from "../data/productsData.js"; 
+import productsData from "../data/productsData.js";
+// import {useNavigate} from "react-router-dom";
 
 const categories = [
   "All",
@@ -12,18 +13,19 @@ const categories = [
 const ProductsCards = () => {
   const [activeCategory, setActiveCategory] = useState("All");
 
+
   const filteredProducts =
     activeCategory === "All"
       ? productsData
       : productsData.filter(
-          (product) => product.category === activeCategory
-        );
+        (product) => product.category === activeCategory
+      );
 
   return (
     <section className="bg-black py-16 px-6">
-     
+
       <h2 className="text-center text-white text-2xl font-bold mb-8">
-        Top Products
+        TOP PRODUCTS
       </h2>
 
       {/* Category Buttons */}
@@ -33,10 +35,9 @@ const ProductsCards = () => {
             key={cat}
             onClick={() => setActiveCategory(cat)}
             className={`px-4 py-1.5 text-sm rounded-md transition
-              ${
-                activeCategory === cat
-                  ? "bg-red-600 text-white cursor-pointer"
-                  : "text-gray-400 hover:text-white cursor-pointer"
+              ${activeCategory === cat
+                ? "bg-red-600 text-white cursor-pointer"
+                : "text-gray-400 hover:text-white cursor-pointer"
               }`}
           >
             {cat}
@@ -90,8 +91,14 @@ const ProductsCards = () => {
               Add to cart
             </button>
           </div>
+
+          
+
         ))}
       </div>
+
+
+
     </section>
   );
 };
