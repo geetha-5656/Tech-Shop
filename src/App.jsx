@@ -4,6 +4,7 @@ import Carousel from './components/Carousel'
 import FeaturedProducts from './components/FeaturedProducts'
 import ProductsCards from './components/ProductsCards'
 import Advantages from './components/Advantages'
+import Footer from './components/Footer'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
    <FeaturedProducts/>
    <ProductsCards/>
    <Advantages/>
+   <Footer/>
     </>
   )
 }
