@@ -1,6 +1,8 @@
 
 import React from "react";
 import Slider from "react-slick";
+import { Link } from "react-router-dom";
+import productsData from "../data/productsData";
 
 const NextArrow = ({ onClick }) => (
   <div
@@ -17,7 +19,7 @@ const NextArrow = ({ onClick }) => (
 const FeaturedProducts = () => {
   const products = [
     {
-      name: "Airdopes 203",
+      name: "boAt Airdopes 203",
       price: "₹1,074",
       originalPrice: "₹1,990",
       image: "/src/images/products/boat203-1.png",
@@ -41,7 +43,7 @@ const FeaturedProducts = () => {
       image: "/src/images/products/boat255r-1.png",
     },
     {
-      name: "Zeb Endurance Run",
+      name: "JBL Endurance Run Sports",
       price: "₹999",
       originalPrice: "₹1,599",
       image: "/src/images/products/jbl-endu-1.png",
@@ -79,31 +81,36 @@ const FeaturedProducts = () => {
       </h2>
 
       <Slider {...settings}>
-        {products.map((item, index) => (
-          <div key={index} className="px-4">
-            <div className="product-slide text-center">
-              <p className="text-gray-400 text-sm mb-4">
-                {item.name}
-              </p>
+        {products.map((item, index) => {
+          const product = productsData.find(p => p.title === item.name);
+          return (
+            <div key={index} className="px-4">
+              <Link to={`/product/${product.id}`}>
+                <div className="product-slide text-center cursor-pointer">
+                  <p className="text-gray-400 text-sm mb-4">
+                    {item.name}
+                  </p>
 
-              <img
-                src={item.image}
-                alt={item.name}
-                className="h-48 mx-auto object-contain mb-6"
-              />
-              <div className="text-white font-semibold">
-                {item.name}
-               
-              <div className="text-white font-semibold">
-                {item.price}
-                <del className="text-gray-500 text-sm ml-2">
-                  {item.originalPrice}
-                </del>
-              </div>
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="h-48 mx-auto object-contain mb-6"
+                  />
+                  <div className="text-white font-semibold">
+                    {item.name}
+                  </div>
+
+                  <div className="text-white font-semibold">
+                    {item.price}
+                    <del className="text-gray-500 text-sm ml-2">
+                      {item.originalPrice}
+                    </del>
+                  </div>
+                </div>
+              </Link>
             </div>
-          </div>
-          </div>
-        ))}
+          );
+        })}
       </Slider>
     </section>
   );

@@ -41,7 +41,7 @@ const ProductDetails = () => {
           <div className="flex-1">
             <img
               src={product.images[activeImg]}
-              className="w-full max-h-[420px] object-contain"
+              className="w-full max-h-105 object-contain"
             />
           </div>
         </div>

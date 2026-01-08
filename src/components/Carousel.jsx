@@ -1,11 +1,14 @@
 
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Carousel = () => {
+  const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
     {
+      id: 3,
       brand: "Boat Airdopes 131",
       title: "Featherweight For Comfort All-Day.",
       price: "₹1,099",
@@ -13,6 +16,7 @@ const Carousel = () => {
       image: "/src/images/products/boat131-3.png",
     },
     {
+      id: 7,
       brand: "Sony WH-XB910N",
       title: "Give Your Favourite Music A Boost.",
       price: "₹13,489",
@@ -53,7 +57,10 @@ const Carousel = () => {
               </del>
             </div>
 
-            <button className="bg-red-600 hover:bg-red-700 transition px-8 py-3 text-lg rounded-md">
+            <button
+              className="bg-red-600 hover:bg-red-700 transition px-8 py-3 text-lg rounded-md cursor-pointer"
+              onClick={() => navigate(`/product/${slide.id}`)}
+            >
               Shop Now
             </button>
           </div>
