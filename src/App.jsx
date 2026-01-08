@@ -7,6 +7,7 @@ import ProductsCards from "./components/ProductsCards";
 import Advantages from "./components/Advantages";
 import Footer from "./components/Footer";
 import Cart from "./pages/Cart";
+import ProductDetails from "./pages/ProductDetails";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         />
 
         <Route path="/cart" element={<Cart />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
       </Routes>
     </>
   );
