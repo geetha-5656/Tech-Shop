@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import { CartProvider } from "./context/CartContext";
 
 import Navbar from "./components/Navbar";
 import Carousel from "./components/Carousel";
@@ -11,7 +12,7 @@ import ProductDetails from "./pages/ProductDetails";
 
 function App() {
   return (
-    <>
+    <CartProvider>
       <Navbar />
 
       <Routes>
@@ -30,7 +31,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/product/:id" element={<ProductDetails />} />
       </Routes>
-    </>
+    </CartProvider>
   );
 }
 
