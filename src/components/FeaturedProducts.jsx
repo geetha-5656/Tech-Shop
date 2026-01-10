@@ -16,6 +16,18 @@ const NextArrow = ({ onClick }) => (
   </div>
 );
 
+const PrevArrow = ({ onClick }) => (
+  <div
+    onClick={onClick}
+    className="absolute left-4 top-1/2 -translate-y-1/2 z-10
+               w-10 h-10 bg-black/70 rounded-full
+               flex items-center justify-center cursor-pointer
+               hover:bg-red-600 transition"
+  >
+    <span className="text-white text-2xl">‹</span>
+  </div>
+);
+
 const FeaturedProducts = () => {
   const products = [
     {
