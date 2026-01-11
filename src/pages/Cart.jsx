@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import Footer from "../components/Footer";
@@ -6,6 +6,10 @@ import Footer from "../components/Footer";
 const Cart = () => {
   const navigate = useNavigate();
   const { cartItems, removeFromCart, updateQuantity, getTotalPrice, getOriginalTotal, getDiscount } = useCart();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (cartItems.length === 0) {
     return (
@@ -43,10 +47,11 @@ const Cart = () => {
                 <img
                   src={item.images[0]}
                   alt={item.title}
-                  className="w-20 h-20 object-contain"
+                  className="w-20 h-20 object-contain cursor-pointer"
+                  onClick={() => navigate(`/product/${item.id}`)}
                 />
                 <div className="flex-1">
-                  <h3 className="text-lg font-medium">{item.title}</h3>
+                  <h3 className="text-lg font-medium cursor-pointer" onClick={() => navigate(`/product/${item.id}`)}>{item.title}</h3>
                   <p className="text-gray-400 text-sm">{item.info}</p>
                   <div className="flex items-center gap-2 mt-2">
                     <span className="text-white font-semibold">₹{item.finalPrice.toLocaleString()}</span>
