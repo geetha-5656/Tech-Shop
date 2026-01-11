@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import SearchBar from "./SearchBar";
 import AuthModal from "./AuthModal";
+import productsData from "../data/productsData";
 
 const Navbar = () => {
   const [activePanel, setActivePanel] = useState(null);
@@ -35,13 +36,18 @@ const Navbar = () => {
         {/* SearchBar */}
         {activePanel === "search" && (
           <div className="flex-1 flex justify-center px-4">
-             <SearchBar 
-             onCancel={() => setActivePanel(null)} 
+             <SearchBar
+             onCancel={() => setActivePanel(null)}
               onSearch={(query) => {
-              
-              navigate(`/search?query=${encodeURIComponent(query)}`);
-              setActivePanel(null);
-      }}
+                const product = productsData.find(p => p.title.toLowerCase().includes(query.toLowerCase()));
+                if (product) {
+                  navigate(`/product/${product.id}`);
+                } else {
+                  alert("Product not found. Redirecting to all products.");
+                  navigate("/products");
+                }
+                setActivePanel(null);
+              }}
 
              
              
