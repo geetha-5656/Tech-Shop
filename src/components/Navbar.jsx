@@ -21,6 +21,7 @@ const Navbar = () => {
       {/* NAVBAR */}
       <nav className="fixed top-0 left-0 w-full h-16 bg-black px-11 py-4 flex justify-between items-center z-50 shadow-md">
         
+        {/* Logo */}
         <div
           className="text-white text-xl font-bold cursor-pointer"
           onClick={() => {
@@ -31,7 +32,25 @@ const Navbar = () => {
           Tech-Shop
         </div>
 
-        {/* ICONS */}
+        {/* SearchBar */}
+        {activePanel === "search" && (
+          <div className="flex-1 flex justify-center px-4">
+             <SearchBar 
+             onCancel={() => setActivePanel(null)} 
+              onSearch={(query) => {
+              
+              navigate(`/search?query=${encodeURIComponent(query)}`);
+              setActivePanel(null);
+      }}
+
+             
+             
+             />
+
+          </div>
+        )}
+
+        {/* Icons */}
         <div className="flex gap-8 text-white text-lg relative">
           <div
             className="relative flex flex-col items-center"
@@ -95,19 +114,11 @@ const Navbar = () => {
         </div>
       </nav>
 
-    
-       {activePanel === "search" && (
-        <div className="fixed top-16 left-0 w-full z-40">
-          <SearchBar />
-        </div>
-      )}
-
-      {/* LOGIN / SIGNUP  */}
+      {/* LOGIN / SIGNUP */}
       {activePanel === "auth" && (
         <AuthModal close={() => setActivePanel(null)} />
       )}
 
-     
       <div className="h-16" />
     </>
   );
