@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo } from "react";
 import productsData from "../data/productsData";
 import ProductsCards from "../components/ProductsCards";
@@ -8,7 +9,6 @@ const AllProducts = () => {
   const [categories, setCategories] = useState([]);
   const [maxPrice, setMaxPrice] = useState(20000);
 
-  /* ---------- HANDLERS ---------- */
   const toggleValue = (value, list, setList) => {
     setList(
       list.includes(value)
@@ -24,21 +24,12 @@ const AllProducts = () => {
     setMaxPrice(20000);
   };
 
-  /* ---------- FILTER + SORT ---------- */
   const filteredProducts = useMemo(() => {
     let filtered = [...productsData];
 
-    if (brands.length) {
-      filtered = filtered.filter((p) => brands.includes(p.brand));
-    }
-
-    if (categories.length) {
-      filtered = filtered.filter((p) =>
-        categories.includes(p.category)
-      );
-    }
-
-    filtered = filtered.filter((p) => p.finalPrice <= maxPrice);
+    if (brands.length) filtered = filtered.filter(p => brands.includes(p.brand));
+    if (categories.length) filtered = filtered.filter(p => categories.includes(p.category));
+    filtered = filtered.filter(p => p.finalPrice <= maxPrice);
 
     switch (sortBy) {
       case "priceLow":
@@ -61,8 +52,12 @@ const AllProducts = () => {
     <section className="bg-black text-white px-8 py-14">
       <div className="max-w-7xl mx-auto grid grid-cols-12 gap-10">
 
-        {/* ================= FILTER BAR ================= */}
-        <aside className="col-span-12 md:col-span-3 bg-[#0e0e0e] border border-gray-700 rounded-md p-5 h-fit sticky top-24">
+        {/* FILTER BAR */}
+        <aside className="col-span-12 md:col-span-3
+          bg-[#0e0e0e] border border-gray-700 rounded-xl
+          p-6 h-fit
+          static md:sticky md:top-24
+          z-20">
 
           <button
             onClick={clearFilters}
@@ -76,17 +71,15 @@ const AllProducts = () => {
           <div className="space-y-2 text-sm text-gray-400 mb-6">
             {[
               { id: "latest", label: "Latest" },
-              { id: "featured", label: "Featured" },
               { id: "topRated", label: "Top Rated" },
-              { id: "priceLow", label: "Price (Lowest First)" },
-              { id: "priceHigh", label: "Price (Highest First)" },
-            ].map((opt) => (
+              { id: "priceLow", label: "Price: Low to High" },
+              { id: "priceHigh", label: "Price: High to Low" },
+            ].map(opt => (
               <p
                 key={opt.id}
                 onClick={() => setSortBy(opt.id)}
-                className={`cursor-pointer ${
-                  sortBy === opt.id ? "text-red-500" : "hover:text-white"
-                }`}
+                className={`cursor-pointer ${sortBy === opt.id ? "text-red-500 font-medium" : "hover:text-white"
+                  }`}
               >
                 {opt.label}
               </p>
@@ -95,11 +88,12 @@ const AllProducts = () => {
 
           {/* BRANDS */}
           <h4 className="text-sm font-semibold mb-3">Brands</h4>
-          <div className="space-y-2 text-sm mb-6">
-            {["JBL", "boAt", "Sony"].map((brand) => (
-              <label key={brand} className="flex items-center gap-2">
+          <div className="space-y-2 text-sm mb-6 text-gray-400">
+            {["JBL", "boAt", "Sony"].map(brand => (
+              <label key={brand} className="flex items-center gap-2 cursor-pointer">
                 <input
                   type="checkbox"
+                  className="accent-red-600"
                   checked={brands.includes(brand)}
                   onChange={() => toggleValue(brand, brands, setBrands)}
                 />
@@ -110,15 +104,14 @@ const AllProducts = () => {
 
           {/* CATEGORY */}
           <h4 className="text-sm font-semibold mb-3">Category</h4>
-          <div className="space-y-2 text-sm mb-6">
-            {["Headphones", "Earbuds", "Earphones", "Neckbands"].map((cat) => (
-              <label key={cat} className="flex items-center gap-2">
+          <div className="space-y-2 text-sm mb-6 text-gray-400">
+            {["Headphones", "Earbuds", "Earphones", "Neckbands"].map(cat => (
+              <label key={cat} className="flex items-center gap-2 cursor-pointer">
                 <input
                   type="checkbox"
+                  className="accent-red-600"
                   checked={categories.includes(cat)}
-                  onChange={() =>
-                    toggleValue(cat, categories, setCategories)
-                  }
+                  onChange={() => toggleValue(cat, categories, setCategories)}
                 />
                 {cat}
               </label>
@@ -140,7 +133,7 @@ const AllProducts = () => {
           </p>
         </aside>
 
-        {/* ================= PRODUCTS ================= */}
+        {/* PRODUCTS */}
         <div className="col-span-12 md:col-span-9">
           <ProductsCards
             title="All Products"
@@ -149,6 +142,7 @@ const AllProducts = () => {
             showBrowseAll={false}
           />
         </div>
+
       </div>
     </section>
   );
