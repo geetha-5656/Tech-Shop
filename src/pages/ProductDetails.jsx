@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import productsData from "../data/productsData";
@@ -16,6 +16,10 @@ const ProductDetails = () => {
   const [addedToCart, setAddedToCart] = useState(false);
 
   const { addToCart } = useCart();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (!product) return null;
 
