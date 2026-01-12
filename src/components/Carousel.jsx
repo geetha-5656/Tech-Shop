@@ -21,7 +21,7 @@ const Carousel = () => {
       title: "Give Your Favourite Music A Boost.",
       price: "₹13,489",
       originalPrice: "₹19,990",
-      image: "/images/products/sonyxb910n-1.png",
+      image: "/images/products/sonyXb910n-1.png",
     },
   ];
 
