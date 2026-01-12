@@ -34,31 +34,31 @@ const FeaturedProducts = () => {
       name: "boAt Airdopes 203",
       price: "₹1,074",
       originalPrice: "₹1,990",
-      image: "/src/images/products/boat203-1.png",
+      image: "/images/products/boat203-1.png",
     },
     {
       name: "boAt Rockerz 518",
       price: "₹1,299",
       originalPrice: "₹3,990",
-      image: "/src/images/products/boat518-1.png",
+      image: "/images/products/boat518-1.png",
     },
     {
       name: "JBL Tune 760NC",
       price: "₹5,999",
       originalPrice: "₹7,999",
-      image: "/src/images/products/jbl760nc-1.png",
+      image: "/images/products/jbl760nc-1.png",
     },
     {
       name: "boAt Rockerz 255",
       price: "₹899",
       originalPrice: "₹2,990",
-      image: "/src/images/products/boat255r-1.png",
+      image: "/images/products/boat255r-1.png",
     },
     {
       name: "JBL Endurance Run Sports",
       price: "₹999",
       originalPrice: "₹1,599",
-      image: "/src/images/products/jbl-endu-1.png",
+      image: "/images/products/jbl-endu-1.png",
     },
   ];
 

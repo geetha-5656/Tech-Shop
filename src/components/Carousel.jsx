@@ -13,7 +13,7 @@ const Carousel = () => {
       title: "Featherweight For Comfort All-Day.",
       price: "₹1,099",
       originalPrice: "₹2,990",
-      image: "/src/images/products/boat131-3.png",
+      image: "/images/products/boat131-3.png",
     },
     {
       id: 7,
@@ -21,7 +21,7 @@ const Carousel = () => {
       title: "Give Your Favourite Music A Boost.",
       price: "₹13,489",
       originalPrice: "₹19,990",
-      image: "/src/images/products/sonyXb910n-1.png",
+      image: "/images/products/sonyxb910n-1.png",
     },
   ];
 
